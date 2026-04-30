@@ -1,0 +1,66 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import SectionHeader from '../components/SectionHeader.astro';
+import InquiryForm from '../components/InquiryForm.astro';
+
+const offerings = [
+  { title: 'What we make', body: 'Single-ingredient freeze-dried treats and food toppers in pouches and bulk formats. Meat, seafood, egg, and plant-based options.' },
+  { title: 'How we work', body: 'We translate your brand brief into a finished product — from recipe and pouch design to compliance documentation and shipping.' },
+  { title: 'Who we partner with', body: 'Pet specialty retailers, e-commerce brands, and veterinary lines across Southeast Asia and beyond.' },
+];
+
+const timeline = [
+  { num: '01', label: 'Inquiry' },
+  { num: '02', label: 'Recipe' },
+  { num: '03', label: 'Sample' },
+  { num: '04', label: 'Production' },
+  { num: '05', label: 'Delivery' },
+];
+---
+
+<BaseLayout title="Private Label" description="Yumiyu manufactures premium freeze-dried pet food for partner brands across Asia.">
+  <section class="container-x pt-12 pb-12 md:pt-16">
+    <SectionHeader eyebrow="OEM / Private Label" title="Your brand. Our craft." subtitle="Yumiyu is a manufacturing partner for retailers and brands building premium freeze-dried lines." />
+    <div class="reveal mt-10 aspect-[16/9] overflow-hidden rounded-3xl bg-cream">
+      <img src="/assets/process/p08.png" alt="Yumiyu private label production" class="h-full w-full object-cover" loading="eager" width="1600" height="900" />
+    </div>
+  </section>
+
+  <section class="container-x section">
+    <div class="grid gap-10 md:grid-cols-3">
+      {offerings.map((o) => (
+        <div class="reveal rounded-2xl border border-line bg-paper p-8">
+          <p class="eyebrow">Capability</p>
+          <h3 class="mt-3 font-display text-2xl">{o.title}</h3>
+          <p class="mt-3 text-ink-soft">{o.body}</p>
+        </div>
+      ))}
+    </div>
+  </section>
+
+  <section class="bg-paper">
+    <div class="container-x section">
+      <SectionHeader eyebrow="The Process" title="Five steps from idea to delivery" align="center" />
+      <ol class="reveal mt-14 grid gap-6 md:grid-cols-5">
+        {timeline.map((t) => (
+          <li class="rounded-2xl border border-line bg-cream p-6 text-center">
+            <p class="eyebrow">Step</p>
+            <p class="mt-2 font-display text-3xl">{t.num}</p>
+            <p class="mt-2 text-sm text-ink-soft">{t.label}</p>
+          </li>
+        ))}
+      </ol>
+    </div>
+  </section>
+
+  <section class="container-x section">
+    <div class="grid gap-12 lg:grid-cols-12">
+      <div class="lg:col-span-5">
+        <SectionHeader eyebrow="Inquiry" title="Tell us about your project." subtitle="We respond within two business days." />
+      </div>
+      <div class="lg:col-span-7">
+        <InquiryForm variant="private-label" />
+      </div>
+    </div>
+  </section>
+</BaseLayout>

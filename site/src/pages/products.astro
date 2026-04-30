@@ -1,0 +1,68 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import SectionHeader from '../components/SectionHeader.astro';
+import ProductCard from '../components/ProductCard.astro';
+import { products, categoryLabel } from '../data/products';
+
+const categories: Array<'all' | keyof typeof categoryLabel> = ['all', 'meat', 'seafood', 'plant', 'egg'];
+---
+
+<BaseLayout title="Products" description="Explore Yumiyu's full range of single-ingredient freeze-dried foods and treats.">
+  <section class="container-x pt-12 pb-12 md:pt-16">
+    <SectionHeader eyebrow="The Range" title="14 single-ingredient flavors" subtitle="Every pack contains one real food, freeze-dried to lock in nutrition and aroma." />
+
+    <div id="filters" class="reveal mt-10 flex flex-wrap gap-2">
+      {categories.map((c) => (
+        <button
+          type="button"
+          data-filter={c}
+          class={`filter-chip rounded-full border px-4 py-2 text-sm transition ${c === 'all' ? 'border-ink bg-ink text-cream' : 'border-line text-ink-soft hover:border-ink hover:text-ink'}`}
+          aria-pressed={c === 'all'}
+        >
+          {c === 'all' ? 'All' : categoryLabel[c]}
+        </button>
+      ))}
+    </div>
+  </section>
+
+  <section class="container-x pb-24">
+    <div id="product-grid" class="grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
+      {products.map((p) => (
+        <div id={p.slug} class="product-item">
+          <ProductCard product={p} />
+        </div>
+      ))}
+    </div>
+    <p class="mt-12 text-center text-sm text-muted">
+      Net weights, ingredient lists, and feeding guides will be added soon. See CONTENT.md.
+    </p>
+  </section>
+</BaseLayout>
+
+<script>
+  const chips = document.querySelectorAll<HTMLButtonElement>('.filter-chip');
+  const items = document.querySelectorAll<HTMLElement>('.product-item');
+
+  chips.forEach((chip) => {
+    chip.addEventListener('click', () => {
+      const value = chip.dataset.filter || 'all';
+
+      chips.forEach((c) => {
+        const active = c === chip;
+        c.setAttribute('aria-pressed', String(active));
+        c.classList.toggle('border-ink', active);
+        c.classList.toggle('bg-ink', active);
+        c.classList.toggle('text-cream', active);
+        c.classList.toggle('border-line', !active);
+        c.classList.toggle('text-ink-soft', !active);
+      });
+
+      items.forEach((item) => {
+        const card = item.querySelector('article');
+        const cat = card?.getAttribute('data-category');
+        const visible = value === 'all' || cat === value;
+        item.style.display = visible ? '' : 'none';
+      });
+    });
+  });
+</script>

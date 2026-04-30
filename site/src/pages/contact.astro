@@ -1,0 +1,42 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import SectionHeader from '../components/SectionHeader.astro';
+import InquiryForm from '../components/InquiryForm.astro';
+import { site } from '../data/site';
+---
+
+<BaseLayout title="Contact" description="Reach Yumiyu via WhatsApp, email, Instagram, TikTok, or Shopee.">
+  <section class="container-x pt-12 pb-12 md:pt-16">
+    <SectionHeader eyebrow="Contact" title="Talk to us." subtitle="We answer messages within two business days." />
+  </section>
+
+  <section class="container-x pb-24">
+    <div class="grid gap-16 lg:grid-cols-12">
+      <div class="lg:col-span-7">
+        <InquiryForm variant="contact" />
+      </div>
+      <aside class="lg:col-span-5 space-y-8">
+        <div class="reveal rounded-2xl border border-line bg-paper p-8">
+          <p class="eyebrow">Direct channels</p>
+          <ul class="mt-4 space-y-3 text-ink-soft">
+            <li><a href={site.whatsappUrl} target="_blank" rel="noopener" class="text-ink hover:underline">WhatsApp · {site.whatsapp}</a></li>
+            <li><a href={`mailto:${site.email}`} class="text-ink hover:underline">{site.email}</a></li>
+          </ul>
+        </div>
+        <div class="reveal rounded-2xl border border-line bg-paper p-8">
+          <p class="eyebrow">Find us online</p>
+          <ul class="mt-4 space-y-3 text-ink-soft">
+            <li><a href={site.social.instagram} target="_blank" rel="noopener" class="text-ink hover:underline">Instagram · @yumiyu.id</a></li>
+            <li><a href={site.social.tiktok} target="_blank" rel="noopener" class="text-ink hover:underline">TikTok · @yumiyu.id</a></li>
+            <li><a href={site.social.shopee} target="_blank" rel="noopener" class="text-ink hover:underline">Shopee · yumiyu.id</a></li>
+          </ul>
+        </div>
+        <div class="reveal rounded-2xl border border-line bg-paper p-8">
+          <p class="eyebrow">Visit</p>
+          <p class="mt-4 text-ink-soft">{site.address}</p>
+          <p class="mt-2 text-xs text-muted">Full address & map will be added — see CONTENT.md.</p>
+        </div>
+      </aside>
+    </div>
+  </section>
+</BaseLayout>

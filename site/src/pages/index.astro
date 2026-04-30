@@ -1,17 +1,174 @@
 ---
-import '../styles/global.css';
+import BaseLayout from '../layouts/BaseLayout.astro';
+import SectionHeader from '../components/SectionHeader.astro';
+import CTABand from '../components/CTABand.astro';
+import { products } from '../data/products';
+import { site } from '../data/site';
+
+const heroImage = '/assets/process/p06.png';
+const factoryShots = ['/assets/process/p02.png', '/assets/process/p04.png', '/assets/process/p10.png'];
 ---
 
-<html lang="en">
-	<head>
-		<meta charset="utf-8" />
-		<link rel="icon" type="image/png" href="/assets/logo.png" />
-		<meta name="viewport" content="width=device-width" />
-		<meta name="generator" content={Astro.generator} />
-		<title>Yumiyu — temp index</title>
-	</head>
-	<body>
-		<h1 class="font-display text-5xl text-ink">Yumiyu</h1>
-		<p class="eyebrow">temporary index</p>
-	</body>
-</html>
+<BaseLayout>
+  <!-- Hero -->
+  <section class="container-x grid items-center gap-12 pt-12 pb-20 md:grid-cols-2 md:pt-16 md:pb-32 lg:gap-20">
+    <div class="reveal">
+      <p class="eyebrow">Crafted in Indonesia · Single Ingredient</p>
+      <h1 class="mt-4 font-display text-5xl leading-[1.05] md:text-6xl lg:text-7xl">
+        Premium Freeze-Dried Nutrition for Pets
+      </h1>
+      <p class="mt-6 max-w-xl text-lg text-ink-soft md:text-xl">
+        Real ingredients. Crafted with care for cats and dogs.
+      </p>
+      <div class="mt-8 flex flex-wrap gap-3">
+        <a href={site.social.shopee} target="_blank" rel="noopener" class="btn-primary">Shop Products</a>
+        <a href="/private-label" class="btn-ghost">Become a Distributor</a>
+      </div>
+    </div>
+    <div class="reveal relative aspect-[4/5] overflow-hidden rounded-3xl bg-cream md:aspect-[5/6]">
+      <img src={heroImage} alt="Yumiyu freeze-dried production" class="h-full w-full object-cover" loading="eager" fetchpriority="high" width="1200" height="1500" />
+      <div class="pointer-events-none absolute inset-0 bg-gradient-to-t from-ink/15 to-transparent"></div>
+    </div>
+  </section>
+
+  <!-- Why Yumiyu -->
+  <section class="section bg-paper">
+    <div class="container-x">
+      <SectionHeader eyebrow="01 — Our Promise" title="Why Yumiyu" subtitle="Three principles guide every batch we make." />
+      <div class="mt-14 grid gap-10 md:grid-cols-3 md:gap-12">
+        <div class="reveal">
+          <p class="font-display text-2xl">Single Ingredient</p>
+          <p class="mt-3 text-ink-soft">No fillers, no preservatives, nothing else. Just one real ingredient per pack.</p>
+        </div>
+        <div class="reveal">
+          <p class="font-display text-2xl">Human Grade</p>
+          <p class="mt-3 text-ink-soft">Sourced and prepared to standards we'd accept on our own table.</p>
+        </div>
+        <div class="reveal">
+          <p class="font-display text-2xl">Nutrition Locked In</p>
+          <p class="mt-3 text-ink-soft">Freeze-drying preserves nutrients and aroma without heat or chemicals.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Flavors showcase -->
+  <section class="section">
+    <div class="container-x">
+      <div class="flex items-end justify-between gap-6">
+        <SectionHeader eyebrow="02 — The Range" title="Flavors crafted from real food" />
+        <a href="/products" class="hidden text-sm text-ink-soft hover:text-ink md:inline">View all flavors →</a>
+      </div>
+      <div class="mt-12 -mx-6 overflow-x-auto px-6 sm:-mx-8 sm:px-8 lg:-mx-12 lg:px-12">
+        <ul class="flex gap-6 pb-2">
+          {products.map((p) => (
+            <li class="reveal w-56 shrink-0 sm:w-64">
+              <a href={`/products#${p.slug}`} class="group block">
+                <div class="aspect-[4/5] overflow-hidden rounded-2xl bg-cream">
+                  <img src={p.image} alt={p.name} loading="lazy" class="h-full w-full object-cover transition duration-500 group-hover:scale-[1.03]" width="512" height="640" />
+                </div>
+                <p class="mt-4 font-display text-xl">{p.name}</p>
+                <p class="mt-1 text-sm text-ink-soft">{p.benefit}</p>
+              </a>
+            </li>
+          ))}
+        </ul>
+      </div>
+      <a href="/products" class="mt-8 inline-block text-sm text-ink-soft hover:text-ink md:hidden">View all flavors →</a>
+    </div>
+  </section>
+
+  <!-- Freeze-drying benefits -->
+  <section class="section bg-paper">
+    <div class="container-x grid items-center gap-12 md:grid-cols-2 lg:gap-20">
+      <div class="reveal grid grid-cols-2 gap-4">
+        <div class="aspect-square overflow-hidden rounded-2xl bg-cream">
+          <img src="/assets/usp/dry.png" alt="Freeze-dried, dry form" class="h-full w-full object-cover" loading="lazy" width="600" height="600" />
+        </div>
+        <div class="aspect-square overflow-hidden rounded-2xl bg-cream">
+          <img src="/assets/usp/rehydrated.png" alt="Rehydrated in water" class="h-full w-full object-cover" loading="lazy" width="600" height="600" />
+        </div>
+      </div>
+      <div>
+        <SectionHeader
+          eyebrow="03 — The Method"
+          title="Why freeze-drying matters"
+          subtitle="Low temperature. No additives. Simply real food, made shelf-stable."
+        />
+        <dl class="reveal mt-10 grid grid-cols-2 gap-6">
+          <div><dt class="eyebrow">Nutrients</dt><dd class="mt-2 font-display text-3xl">~98%</dd><dd class="text-sm text-ink-soft">retained</dd></div>
+          <div><dt class="eyebrow">Shelf life</dt><dd class="mt-2 font-display text-3xl">12–24mo</dd><dd class="text-sm text-ink-soft">no refrigeration</dd></div>
+          <div><dt class="eyebrow">Ingredients</dt><dd class="mt-2 font-display text-3xl">1</dd><dd class="text-sm text-ink-soft">per pack</dd></div>
+          <div><dt class="eyebrow">Preservatives</dt><dd class="mt-2 font-display text-3xl">0</dd><dd class="text-sm text-ink-soft">none added</dd></div>
+        </dl>
+      </div>
+    </div>
+  </section>
+
+  <!-- Manufacturing band -->
+  <section class="bg-ink text-cream">
+    <div class="container-x section">
+      <div class="grid gap-12 md:grid-cols-12">
+        <div class="md:col-span-5">
+          <p class="eyebrow text-gold">04 — The Factory</p>
+          <h2 class="mt-3 font-display text-4xl text-cream md:text-5xl lg:text-6xl">A factory built around real ingredients.</h2>
+          <p class="mt-5 text-lg text-cream/80">From sourcing to packaging, every step is run in-house. Visit our process to see the standard we hold.</p>
+          <a href="/manufacturing" class="mt-8 inline-flex btn-gold">See our process</a>
+        </div>
+        <div class="md:col-span-7 grid grid-cols-2 gap-4">
+          <div class="aspect-[3/4] overflow-hidden rounded-2xl">
+            <img src={factoryShots[0]} alt="Production floor" class="h-full w-full object-cover" loading="lazy" width="600" height="800" />
+          </div>
+          <div class="grid gap-4">
+            <div class="aspect-[3/2] overflow-hidden rounded-2xl">
+              <img src={factoryShots[1]} alt="Quality control" class="h-full w-full object-cover" loading="lazy" width="600" height="400" />
+            </div>
+            <div class="aspect-square overflow-hidden rounded-2xl">
+              <img src={factoryShots[2]} alt="Packaging" class="h-full w-full object-cover" loading="lazy" width="600" height="600" />
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- OEM CTA -->
+  <CTABand
+    variant="cream"
+    eyebrow="05 — Partnership"
+    title="Build your own freeze-dried line with us."
+    body="Yumiyu manufactures private label freeze-dried pet food and treats for partners across Asia."
+    ctaLabel="Private Label Inquiry"
+    ctaHref="/private-label"
+  />
+
+  <!-- Testimonials placeholder -->
+  <section class="section bg-paper">
+    <div class="container-x">
+      <SectionHeader eyebrow="06 — Voices" title="Loved by pets, trusted by their humans" />
+      <div class="mt-14 grid gap-8 md:grid-cols-3">
+        {[1,2,3].map(() => (
+          <figure class="reveal rounded-2xl border border-line bg-cream p-8">
+            <p class="font-display text-3xl text-gold">"</p>
+            <blockquote class="mt-2 text-lg text-ink-soft">Customer review coming soon.</blockquote>
+            <figcaption class="mt-6 text-sm text-muted">— Pending content. See CONTENT.md.</figcaption>
+          </figure>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact band -->
+  <section class="bg-ink text-cream">
+    <div class="container-x section text-center">
+      <p class="eyebrow text-gold">07 — Get in touch</p>
+      <h2 class="mt-3 font-display text-4xl text-cream md:text-5xl lg:text-6xl">Talk to us.</h2>
+      <p class="mt-5 text-lg text-cream/80">Stockists, retailers, and pet families — we'd love to hear from you.</p>
+      <div class="mt-8 flex flex-wrap justify-center gap-3">
+        <a href={site.whatsappUrl} target="_blank" rel="noopener" class="btn-gold">WhatsApp</a>
+        <a href={`mailto:${site.email}`} class="rounded-full border border-cream/30 px-7 py-3 text-sm text-cream hover:bg-cream hover:text-ink">{site.email}</a>
+        <a href={site.social.instagram} target="_blank" rel="noopener" class="rounded-full border border-cream/30 px-7 py-3 text-sm text-cream hover:bg-cream hover:text-ink">Instagram</a>
+      </div>
+    </div>
+  </section>
+</BaseLayout>
