@@ -1,0 +1,55 @@
+---
+interface Props {
+  variant?: 'contact' | 'private-label';
+}
+const { variant = 'contact' } = Astro.props;
+const isPL = variant === 'private-label';
+---
+
+<form
+  action="https://formspree.io/f/REPLACE_ENDPOINT"
+  method="POST"
+  class="reveal grid gap-5"
+>
+  <div class="grid gap-5 md:grid-cols-2">
+    <label class="block">
+      <span class="eyebrow">Name</span>
+      <input type="text" name="name" required class="mt-2 w-full rounded-lg border border-line bg-paper px-4 py-3 text-ink focus:border-ink focus:outline-none" />
+    </label>
+    <label class="block">
+      <span class="eyebrow">Email</span>
+      <input type="email" name="email" required class="mt-2 w-full rounded-lg border border-line bg-paper px-4 py-3 text-ink focus:border-ink focus:outline-none" />
+    </label>
+  </div>
+
+  {isPL && (
+    <div class="grid gap-5 md:grid-cols-2">
+      <label class="block">
+        <span class="eyebrow">Company</span>
+        <input type="text" name="company" class="mt-2 w-full rounded-lg border border-line bg-paper px-4 py-3 text-ink focus:border-ink focus:outline-none" />
+      </label>
+      <label class="block">
+        <span class="eyebrow">Country</span>
+        <input type="text" name="country" class="mt-2 w-full rounded-lg border border-line bg-paper px-4 py-3 text-ink focus:border-ink focus:outline-none" />
+      </label>
+    </div>
+  )}
+
+  {isPL && (
+    <label class="block">
+      <span class="eyebrow">Estimated MOQ</span>
+      <input type="text" name="moq" placeholder="e.g. 5,000 units / month" class="mt-2 w-full rounded-lg border border-line bg-paper px-4 py-3 text-ink focus:border-ink focus:outline-none" />
+    </label>
+  )}
+
+  <label class="block">
+    <span class="eyebrow">{isPL ? 'Project details' : 'Message'}</span>
+    <textarea name="message" rows="6" required class="mt-2 w-full rounded-lg border border-line bg-paper px-4 py-3 text-ink focus:border-ink focus:outline-none"></textarea>
+  </label>
+
+  <button type="submit" class="btn-primary self-start">
+    {isPL ? 'Submit Inquiry' : 'Send Message'}
+  </button>
+
+  <p class="text-xs text-muted">Form endpoint is a placeholder — see CONTENT.md.</p>
+</form>

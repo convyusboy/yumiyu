@@ -1,0 +1,30 @@
+---
+import type { Product } from '../data/products';
+import { forLabel } from '../data/products';
+
+interface Props { product: Product }
+const { product } = Astro.props;
+---
+
+<article
+  data-category={product.category}
+  data-for={product.for}
+  class="reveal group flex flex-col overflow-hidden rounded-2xl border border-line bg-paper transition hover:border-ink/20 hover:shadow-[0_20px_60px_-30px_rgba(15,32,66,0.25)]"
+>
+  <div class="aspect-[4/5] overflow-hidden bg-cream">
+    <img
+      src={product.image}
+      alt={`${product.name} packaging`}
+      loading="lazy"
+      class="h-full w-full object-cover transition duration-500 group-hover:scale-[1.03]"
+      width="640"
+      height="800"
+    />
+  </div>
+  <div class="flex flex-1 flex-col p-6">
+    <p class="eyebrow">Freeze-Dried</p>
+    <h3 class="mt-2 font-display text-2xl text-ink">{product.name}</h3>
+    <p class="mt-2 text-sm text-ink-soft">{product.benefit}</p>
+    <p class="mt-4 text-xs uppercase text-muted" style="letter-spacing: var(--tracking-eyebrow);">{forLabel[product.for]}</p>
+  </div>
+</article>
