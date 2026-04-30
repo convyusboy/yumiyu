@@ -32,11 +32,9 @@ The capability strip currently shows em-dashes:
 - [ ] **MOQ** — minimum order quantity.
 - [ ] **Certifications count** — how many you hold.
 
-## 4. Testimonials (`src/pages/index.astro`)
+## 4. Testimonials
 
-Three placeholder cards in the testimonials section:
-
-- [ ] Replace each with a real quote, attribution, and (optionally) a small avatar.
+Section removed from the home page for now. When you have real customer quotes (3+), re-add a "Voices" section to `src/pages/index.astro` with quote, attribution, and (optionally) a small avatar per card.
 
 ## 5. Inquiry Form Endpoint (`src/components/InquiryForm.astro`)
 
