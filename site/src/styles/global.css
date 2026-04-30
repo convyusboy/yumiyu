@@ -1,1 +1,105 @@
-@import "tailwindcss";
+@import 'tailwindcss';
+@import '@fontsource-variable/fraunces';
+@import '@fontsource-variable/inter';
+
+@theme {
+  --color-ink: #0F2042;
+  --color-ink-soft: #2B3A6B;
+  --color-gold: #E8B84A;
+  --color-cream: #FAF6EE;
+  --color-paper: #FFFFFF;
+  --color-line: #E8E2D2;
+  --color-muted: #6B7280;
+  --color-success: #2F6F4F;
+
+  --font-display: "Fraunces Variable", Georgia, serif;
+  --font-sans: "Inter Variable", system-ui, sans-serif;
+
+  --tracking-eyebrow: 0.18em;
+
+  --container-content: 1280px;
+  --container-prose: 1080px;
+}
+
+@layer base {
+  html {
+    background-color: var(--color-cream);
+    color: var(--color-ink);
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+  }
+  body {
+    font-family: var(--font-sans);
+    font-size: 16px;
+    line-height: 1.6;
+  }
+  h1, h2, h3, h4 {
+    font-family: var(--font-display);
+    font-weight: 400;
+    letter-spacing: -0.01em;
+    line-height: 1.1;
+    color: var(--color-ink);
+  }
+  ::selection {
+    background-color: var(--color-gold);
+    color: var(--color-ink);
+  }
+  a {
+    color: inherit;
+  }
+}
+
+@layer components {
+  .eyebrow {
+    @apply text-xs font-medium uppercase text-ink-soft;
+    letter-spacing: var(--tracking-eyebrow);
+  }
+  .btn-primary {
+    @apply inline-flex items-center justify-center rounded-full bg-ink px-7 py-3 text-sm font-medium text-cream transition;
+  }
+  .btn-primary:hover {
+    background-color: var(--color-ink-soft);
+  }
+  .btn-ghost {
+    @apply inline-flex items-center justify-center rounded-full border px-7 py-3 text-sm font-medium text-ink transition;
+    border-color: color-mix(in srgb, var(--color-ink) 30%, transparent);
+  }
+  .btn-ghost:hover {
+    border-color: var(--color-ink);
+    background-color: var(--color-ink);
+    color: var(--color-cream);
+  }
+  .btn-gold {
+    @apply inline-flex items-center justify-center rounded-full bg-gold px-7 py-3 text-sm font-medium text-ink transition;
+  }
+  .btn-gold:hover {
+    filter: brightness(0.95);
+  }
+  .container-x {
+    @apply mx-auto w-full px-6 sm:px-8 lg:px-12;
+    max-width: var(--container-content);
+  }
+  .section {
+    @apply py-16 md:py-24 lg:py-32;
+  }
+  .hairline {
+    border-top: 1px solid var(--color-line);
+  }
+  .reveal {
+    opacity: 0;
+    transform: translateY(16px);
+    transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+  }
+  .reveal.is-visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .reveal {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+}
