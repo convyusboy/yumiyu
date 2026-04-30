@@ -4,8 +4,8 @@ This file enumerates every placeholder in the live site. Replace each item with 
 
 ## 1. Brand & Company
 
-- [ ] **Email** — `src/data/site.ts` → `email`. Currently `hello@yumiyu.id`.
-- [ ] **WhatsApp number** — `src/data/site.ts` → `whatsapp` and `whatsappUrl`. Currently placeholder.
+- [x] **Email** — `src/data/site.ts` → `email`. Set to `social@yumi-yu.com`.
+- [x] **WhatsApp number** — `src/data/site.ts` → `whatsapp` / `whatsappUrl`. Set to `+62 898 4976 377` / `https://wa.me/628984976377`.
 - [ ] **Factory address** — `src/data/site.ts` → `address`. Currently just `"Indonesia"`.
 - [ ] **Founder/team bios** — `src/pages/about.astro`, "Our Story" section. Currently a draft narrative.
 - [ ] **Founding year** — Add to About if desired.

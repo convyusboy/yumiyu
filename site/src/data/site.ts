@@ -4,9 +4,9 @@ export const site = {
   description:
     'Yumiyu makes premium freeze-dried pet food and treats for cats and dogs. Single-ingredient, human-grade, crafted in Indonesia.',
   url: 'https://yumiyu.id',
-  email: 'hello@yumiyu.id', // PLACEHOLDER — see CONTENT.md
-  whatsapp: '+62 000 0000 0000', // PLACEHOLDER — see CONTENT.md
-  whatsappUrl: 'https://wa.me/00000000000', // PLACEHOLDER — see CONTENT.md
+  email: 'social@yumi-yu.com',
+  whatsapp: '+62 898 4976 377',
+  whatsappUrl: 'https://wa.me/628984976377',
   address: 'Indonesia', // PLACEHOLDER — see CONTENT.md
   social: {
     instagram: 'https://instagram.com/yumiyu.id',
