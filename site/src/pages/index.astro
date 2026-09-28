@@ -2,7 +2,6 @@
 import { Image } from 'astro:assets';
 import BaseLayout from '../layouts/BaseLayout.astro';
 import SectionHeader from '../components/SectionHeader.astro';
-import CTABand from '../components/CTABand.astro';
 import { products } from '../data/products';
 import { site } from '../data/site';
 import dryUsp from '../assets/usp/dry.png';
@@ -29,7 +28,7 @@ const factoryShots = [factory02, factory04, factory10];
       </p>
       <div class="mt-8 flex flex-wrap gap-3">
         <a href={site.social.shopee} target="_blank" rel="noopener" class="btn-primary">Shop Products</a>
-        <a href="/private-label" class="btn-ghost">Become a Distributor</a>
+        <a href="/products" class="btn-ghost">View Flavors</a>
       </div>
     </div>
     <div class="reveal relative">
@@ -157,20 +156,10 @@ const factoryShots = [factory02, factory04, factory10];
     </div>
   </section>
 
-  <!-- OEM CTA -->
-  <CTABand
-    variant="cream"
-    eyebrow="05 — Partnership"
-    title="Build your own freeze-dried line with us."
-    body="Yumiyu manufactures private label freeze-dried pet food and treats for partners across Asia."
-    ctaLabel="Private Label Inquiry"
-    ctaHref="/private-label"
-  />
-
   <!-- Contact band -->
   <section class="bg-ink text-cream">
     <div class="container-x section text-center">
-      <p class="eyebrow text-gold">06 — Get in touch</p>
+      <p class="eyebrow text-gold">05 — Get in touch</p>
       <h2 class="mt-3 font-display text-4xl text-cream md:text-5xl lg:text-6xl">Talk to us.</h2>
       <p class="mt-5 text-lg text-cream/80">Stockists, retailers, and pet families — we'd love to hear from you.</p>
       <div class="mt-8 flex flex-wrap justify-center gap-3">
