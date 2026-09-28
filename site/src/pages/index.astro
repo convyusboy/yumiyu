@@ -1,16 +1,19 @@
 ---
+import { Image } from 'astro:assets';
 import BaseLayout from '../layouts/BaseLayout.astro';
 import SectionHeader from '../components/SectionHeader.astro';
 import CTABand from '../components/CTABand.astro';
 import { products } from '../data/products';
 import { site } from '../data/site';
+import dryUsp from '../assets/usp/dry.png';
+import rehydratedUsp from '../assets/usp/rehydrated.png';
+import factory02 from '../assets/process/p02.png';
+import factory04 from '../assets/process/p04.png';
+import factory10 from '../assets/process/p10.png';
 
-const heroProducts = [
-  { name: 'Chicken Chunks', image: '/assets/products/chicken.png' },
-  { name: 'Mackerel Tuna Chunks', image: '/assets/products/mackerel-tuna.png' },
-  { name: 'Pumpkin Chunks', image: '/assets/products/pumpkin.png' },
-];
-const factoryShots = ['/assets/process/p02.png', '/assets/process/p04.png', '/assets/process/p10.png'];
+const heroSlugs = ['chicken-chunks', 'mackerel-tuna-chunks', 'pumpkin-chunks'];
+const heroProducts = heroSlugs.map((slug) => products.find((p) => p.slug === slug)!);
+const factoryShots = [factory02, factory04, factory10];
 ---
 
 <BaseLayout>
@@ -37,14 +40,14 @@ const factoryShots = ['/assets/process/p02.png', '/assets/process/p04.png', '/as
               i === 1 ? 'aspect-[3/5] -translate-y-2 sm:-translate-y-4' : 'aspect-[3/4]'
             }`}
           >
-            <img
+            <Image
               src={p.image}
               alt={`${p.name} packaging`}
               class="h-full w-full object-cover"
               loading="eager"
               fetchpriority={i === 1 ? 'high' : undefined}
-              width="600"
-              height="900"
+              width={600}
+              height={i === 1 ? 1000 : 800}
             />
           </div>
         ))}
@@ -87,7 +90,7 @@ const factoryShots = ['/assets/process/p02.png', '/assets/process/p04.png', '/as
             <li class="reveal w-56 shrink-0 sm:w-64">
               <a href={`/products#${p.slug}`} class="group block">
                 <div class="aspect-[4/5] overflow-hidden rounded-2xl bg-cream">
-                  <img src={p.image} alt={p.name} loading="lazy" class="h-full w-full object-cover transition duration-500 group-hover:scale-[1.03]" width="512" height="640" />
+                  <Image src={p.image} alt={p.name} loading="lazy" class="h-full w-full object-cover transition duration-500 group-hover:scale-[1.03]" width={512} height={640} />
                 </div>
                 <p class="mt-4 font-display text-xl">{p.name}</p>
                 <p class="mt-1 text-sm text-ink-soft">{p.benefit}</p>
@@ -105,10 +108,10 @@ const factoryShots = ['/assets/process/p02.png', '/assets/process/p04.png', '/as
     <div class="container-x grid items-center gap-12 md:grid-cols-2 lg:gap-20">
       <div class="reveal grid grid-cols-2 gap-4">
         <div class="aspect-square overflow-hidden rounded-2xl bg-cream">
-          <img src="/assets/usp/dry.png" alt="Freeze-dried, dry form" class="h-full w-full object-cover" loading="lazy" width="600" height="600" />
+          <Image src={dryUsp} alt="Freeze-dried, dry form" class="h-full w-full object-cover" loading="lazy" width={600} height={600} />
         </div>
         <div class="aspect-square overflow-hidden rounded-2xl bg-cream">
-          <img src="/assets/usp/rehydrated.png" alt="Rehydrated in water" class="h-full w-full object-cover" loading="lazy" width="600" height="600" />
+          <Image src={rehydratedUsp} alt="Rehydrated in water" class="h-full w-full object-cover" loading="lazy" width={600} height={600} />
         </div>
       </div>
       <div>
@@ -139,14 +142,14 @@ const factoryShots = ['/assets/process/p02.png', '/assets/process/p04.png', '/as
         </div>
         <div class="md:col-span-7 grid grid-cols-2 gap-4">
           <div class="aspect-[3/4] overflow-hidden rounded-2xl">
-            <img src={factoryShots[0]} alt="Production floor" class="h-full w-full object-cover" loading="lazy" width="600" height="800" />
+            <Image src={factoryShots[0]} alt="Production floor" class="h-full w-full object-cover" loading="lazy" width={600} height={800} />
           </div>
           <div class="grid gap-4">
             <div class="aspect-[3/2] overflow-hidden rounded-2xl">
-              <img src={factoryShots[1]} alt="Quality control" class="h-full w-full object-cover" loading="lazy" width="600" height="400" />
+              <Image src={factoryShots[1]} alt="Quality control" class="h-full w-full object-cover" loading="lazy" width={600} height={400} />
             </div>
             <div class="aspect-square overflow-hidden rounded-2xl">
-              <img src={factoryShots[2]} alt="Packaging" class="h-full w-full object-cover" loading="lazy" width="600" height="600" />
+              <Image src={factoryShots[2]} alt="Packaging" class="h-full w-full object-cover" loading="lazy" width={600} height={600} />
             </div>
           </div>
         </div>

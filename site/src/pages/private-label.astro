@@ -1,7 +1,9 @@
 ---
+import { Image } from 'astro:assets';
 import BaseLayout from '../layouts/BaseLayout.astro';
 import SectionHeader from '../components/SectionHeader.astro';
 import InquiryForm from '../components/InquiryForm.astro';
+import p08 from '../assets/process/p08.png';
 
 const offerings = [
   { title: 'What we make', body: 'Single-ingredient freeze-dried treats and food toppers in pouches and bulk formats. Meat, seafood, egg, and plant-based options.' },
@@ -22,7 +24,7 @@ const timeline = [
   <section class="container-x pt-12 pb-12 md:pt-16">
     <SectionHeader eyebrow="OEM / Private Label" title="Your brand. Our craft." subtitle="Yumiyu is a manufacturing partner for retailers and brands building premium freeze-dried lines." />
     <div class="reveal mt-10 aspect-[16/9] overflow-hidden rounded-3xl bg-cream">
-      <img src="/assets/process/p08.png" alt="Yumiyu private label production" class="h-full w-full object-cover" loading="eager" width="1600" height="900" />
+      <Image src={p08} alt="Yumiyu private label production" class="h-full w-full object-cover" loading="eager" width={1600} height={900} />
     </div>
   </section>
 

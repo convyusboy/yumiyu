@@ -1,15 +1,22 @@
 ---
+import { Image } from 'astro:assets';
 import BaseLayout from '../layouts/BaseLayout.astro';
 import SectionHeader from '../components/SectionHeader.astro';
 import ProcessStep from '../components/ProcessStep.astro';
 import CTABand from '../components/CTABand.astro';
+import p01 from '../assets/process/p01.png';
+import p03 from '../assets/process/p03.png';
+import p05 from '../assets/process/p05.png';
+import p07 from '../assets/process/p07.png';
+import p09 from '../assets/process/p09.png';
+import p11 from '../assets/process/p11.png';
 
 const steps = [
-  { number: '01', title: 'Ingredient Sourcing', body: 'We work directly with trusted farms and fisheries across Indonesia. Every batch starts with food we would eat ourselves.', image: '/assets/process/p01.png' },
-  { number: '02', title: 'Preparation', body: 'Whole ingredients are cleaned, portioned, and arranged on trays by hand. No marinades, no fillers.', image: '/assets/process/p03.png' },
-  { number: '03', title: 'Freeze-Drying', body: 'Trays move into low-temperature vacuum chambers, where moisture is sublimated away over 24+ hours — preserving nutrition and structure.', image: '/assets/process/p05.png' },
-  { number: '04', title: 'Quality Control', body: 'Each batch is sampled for moisture, weight, and visual integrity before it ever sees a pouch.', image: '/assets/process/p07.png' },
-  { number: '05', title: 'Packaging', body: 'Sealed in resealable, moisture-barrier pouches, each pack is coded for full traceability back to its source batch.', image: '/assets/process/p09.png' },
+  { number: '01', title: 'Ingredient Sourcing', body: 'We work directly with trusted farms and fisheries across Indonesia. Every batch starts with food we would eat ourselves.', image: p01 },
+  { number: '02', title: 'Preparation', body: 'Whole ingredients are cleaned, portioned, and arranged on trays by hand. No marinades, no fillers.', image: p03 },
+  { number: '03', title: 'Freeze-Drying', body: 'Trays move into low-temperature vacuum chambers, where moisture is sublimated away over 24+ hours — preserving nutrition and structure.', image: p05 },
+  { number: '04', title: 'Quality Control', body: 'Each batch is sampled for moisture, weight, and visual integrity before it ever sees a pouch.', image: p07 },
+  { number: '05', title: 'Packaging', body: 'Sealed in resealable, moisture-barrier pouches, each pack is coded for full traceability back to its source batch.', image: p09 },
 ];
 ---
 
@@ -17,7 +24,7 @@ const steps = [
   <section class="container-x pt-12 pb-12 md:pt-16">
     <SectionHeader eyebrow="Our Process" title="From whole food to sealed pouch" subtitle="Every Yumiyu pack is the result of five disciplined steps run inside our own facility." />
     <div class="reveal mt-10 aspect-[16/9] overflow-hidden rounded-3xl bg-cream">
-      <img src="/assets/process/p11.png" alt="Yumiyu factory floor" class="h-full w-full object-cover" loading="eager" width="1600" height="900" />
+      <Image src={p11} alt="Yumiyu factory floor" class="h-full w-full object-cover" loading="eager" width={1600} height={900} />
     </div>
   </section>
 

@@ -1,9 +1,12 @@
 ---
+import { Image } from 'astro:assets';
+import type { ImageMetadata } from 'astro';
+
 interface Props {
   number: string;
   title: string;
   body: string;
-  image: string;
+  image: ImageMetadata;
   reverse?: boolean;
 }
 const { number, title, body, image, reverse = false } = Astro.props;
@@ -11,7 +14,7 @@ const { number, title, body, image, reverse = false } = Astro.props;
 
 <div class={`reveal grid items-center gap-10 md:grid-cols-2 lg:gap-16 ${reverse ? 'md:[&>*:first-child]:order-2' : ''}`}>
   <div class="overflow-hidden rounded-2xl bg-cream">
-    <img src={image} alt={title} loading="lazy" class="h-full w-full object-cover" width="900" height="600" />
+    <Image src={image} alt={title} loading="lazy" class="h-full w-full object-cover" width={900} height={600} />
   </div>
   <div>
     <p class="eyebrow">Step {number}</p>

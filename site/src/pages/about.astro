@@ -1,7 +1,11 @@
 ---
+import { Image } from 'astro:assets';
 import BaseLayout from '../layouts/BaseLayout.astro';
 import SectionHeader from '../components/SectionHeader.astro';
 import CTABand from '../components/CTABand.astro';
+import teamAtWork from '../assets/process/p06.png';
+import teamPhoto1 from '../assets/process/p12.png';
+import teamPhoto2 from '../assets/process/p02.png';
 
 const values = [
   { title: 'Real food first', body: 'Whole ingredients, freeze-dried. Nothing else added. Nothing taken away.' },
@@ -9,7 +13,7 @@ const values = [
   { title: 'Transparent always', body: 'Where it came from, who made it, and what is in the pack — always traceable.' },
 ];
 
-const teamPhotos = ['/assets/process/p12.png', '/assets/process/p02.png'];
+const teamPhotos = [teamPhoto1, teamPhoto2];
 ---
 
 <BaseLayout title="About" description="The story behind Yumiyu — a freeze-dried pet food brand and manufacturer based in Indonesia.">
@@ -20,7 +24,7 @@ const teamPhotos = ['/assets/process/p12.png', '/assets/process/p02.png'];
       subtitle="We started Yumiyu because we wanted to know exactly what was in every pack we fed our own pets. So we built the factory."
     />
     <div class="reveal mt-10 aspect-[16/9] overflow-hidden rounded-3xl bg-cream">
-      <img src="/assets/process/p06.png" alt="Yumiyu team at work" class="h-full w-full object-cover" loading="eager" width="1600" height="900" />
+      <Image src={teamAtWork} alt="Yumiyu team at work" class="h-full w-full object-cover" loading="eager" width={1600} height={900} />
     </div>
   </section>
 
@@ -34,10 +38,10 @@ const teamPhotos = ['/assets/process/p12.png', '/assets/process/p02.png'];
       </div>
       <div class="grid gap-4">
         <div class="aspect-[4/3] overflow-hidden rounded-2xl bg-cream">
-          <img src={teamPhotos[0]} alt="Yumiyu facility" class="h-full w-full object-cover" loading="lazy" width="800" height="600" />
+          <Image src={teamPhotos[0]} alt="Yumiyu facility" class="h-full w-full object-cover" loading="lazy" width={800} height={600} />
         </div>
         <div class="aspect-[4/3] overflow-hidden rounded-2xl bg-cream">
-          <img src={teamPhotos[1]} alt="Yumiyu team" class="h-full w-full object-cover" loading="lazy" width="800" height="600" />
+          <Image src={teamPhotos[1]} alt="Yumiyu team" class="h-full w-full object-cover" loading="lazy" width={800} height={600} />
         </div>
       </div>
     </div>

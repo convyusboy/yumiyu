@@ -1,4 +1,5 @@
 ---
+import { Image } from 'astro:assets';
 import type { Product } from '../data/products';
 import { forLabel } from '../data/products';
 
@@ -12,13 +13,13 @@ const { product } = Astro.props;
   class="reveal group flex flex-col overflow-hidden rounded-2xl border border-line bg-paper transition hover:border-ink/20 hover:shadow-[0_20px_60px_-30px_rgba(15,32,66,0.25)]"
 >
   <div class="aspect-[4/5] overflow-hidden bg-cream">
-    <img
+    <Image
       src={product.image}
       alt={`${product.name} packaging`}
       loading="lazy"
       class="h-full w-full object-cover transition duration-500 group-hover:scale-[1.03]"
-      width="640"
-      height="800"
+      width={640}
+      height={800}
     />
   </div>
   <div class="flex flex-1 flex-col p-6">
