@@ -1,0 +1,51 @@
+---
+import { Image } from 'astro:assets';
+import type { EventEntry } from '../data/events';
+
+interface Props { event: EventEntry }
+const { event } = Astro.props;
+const [cover, ...rest] = event.photos ?? [];
+const extraPhotos = rest.slice(0, 3);
+---
+
+<article class="reveal grid gap-6 rounded-2xl border border-line bg-paper p-6 md:grid-cols-[minmax(0,320px)_1fr] md:p-8">
+  <div class="aspect-[4/3] overflow-hidden rounded-xl bg-cream">
+    {cover ? (
+      <Image src={cover} alt={`${event.name} documentation`} class="h-full w-full object-cover" width={640} height={480} loading="lazy" />
+    ) : (
+      <div class="flex h-full w-full flex-col items-center justify-center gap-2 text-muted">
+        <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+          <rect x="3" y="3" width="18" height="18" rx="2"></rect>
+          <circle cx="8.5" cy="8.5" r="1.5"></circle>
+          <path d="M21 15l-5-5-4 4-3-3-6 6"></path>
+        </svg>
+        <p class="text-xs">Photos coming soon</p>
+      </div>
+    )}
+  </div>
+  <div class="flex flex-col">
+    <div class="flex flex-wrap items-center gap-2">
+      <span class="eyebrow">{event.type}</span>
+      <span class="text-muted">·</span>
+      <span class="text-sm text-ink-soft">{event.date}</span>
+    </div>
+    <h3 class="mt-2 font-display text-2xl md:text-3xl">{event.name}</h3>
+    <p class="mt-1 text-sm text-ink-soft">{event.location}</p>
+    <p class="mt-4 text-ink-soft">{event.description}</p>
+    {event.funFact && (
+      <p class="mt-4 rounded-xl bg-gold/10 px-4 py-3 text-sm text-ink">
+        <span class="eyebrow text-gold">Fun fact — </span>
+        {event.funFact}
+      </p>
+    )}
+    {extraPhotos.length > 0 && (
+      <div class="mt-4 grid grid-cols-3 gap-2">
+        {extraPhotos.map((photo, i) => (
+          <div class="aspect-square overflow-hidden rounded-lg bg-cream">
+            <Image src={photo} alt={`${event.name} photo ${i + 2}`} class="h-full w-full object-cover" width={200} height={200} loading="lazy" />
+          </div>
+        ))}
+      </div>
+    )}
+  </div>
+</article>

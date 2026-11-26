@@ -1,0 +1,32 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import SectionHeader from '../components/SectionHeader.astro';
+import EventCard from '../components/EventCard.astro';
+import { events } from '../data/events';
+import { site } from '../data/site';
+---
+
+<BaseLayout title="Events" description="Where Yumiyu has shown up — the expos, bazaars, and pet community events we've joined so far.">
+  <section class="container-x pt-12 pb-12 md:pt-16">
+    <SectionHeader
+      eyebrow="Community"
+      title="Where you've seen us"
+      subtitle="A running log of the expos, bazaars, and pet events we've joined — with the stories and photos from each."
+    />
+  </section>
+
+  <section class="container-x pb-24">
+    {events.length > 0 ? (
+      <div class="grid gap-8">
+        {events.map((event) => <EventCard event={event} />)}
+      </div>
+    ) : (
+      <div class="reveal rounded-2xl border border-dashed border-line bg-paper p-12 text-center">
+        <p class="font-display text-2xl">We're just getting started.</p>
+        <p class="mt-3 text-ink-soft">Our events archive is being put together — check back soon, or follow along for real-time updates.</p>
+        <a href={site.social.instagram} target="_blank" rel="noopener" class="btn-primary mt-6 inline-flex">Follow on Instagram</a>
+      </div>
+    )}
+    {/* Add entries to src/data/events.ts as Yumiyu joins events. See CONTENT.md. */}
+  </section>
+</BaseLayout>

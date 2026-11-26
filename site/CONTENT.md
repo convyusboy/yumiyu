@@ -9,7 +9,7 @@ This file enumerates every placeholder in the live site. Replace each item with 
 - [ ] **Factory address** — `src/data/site.ts` → `address`. Currently just `"Indonesia"`.
 - [ ] **Founder/team bios** — `src/pages/about.astro`, "Our Story" section. Currently a draft narrative.
 - [ ] **Founding year** — Add to About if desired.
-- [ ] **Certifications** — HACCP, ISO, BPOM etc. Add to Manufacturing capability strip.
+- [ ] **Certifications** — HACCP, ISO, BPOM etc. Add to the Manufacturing page if desired.
 - [ ] **Founder portrait / team photo** — Currently using factory photos as stand-ins on About.
 
 ## 2. Products (`src/data/products.ts`)
@@ -23,18 +23,20 @@ For each of the 14 flavors, fill in the optional fields on each `Product`:
 - [ ] **Shopee deep-link per product** — optional, can be added to the `Product` type.
 - [ ] **Pricing** — handled on Shopee, not surfaced on the website by default.
 
-## 3. Capability Stats (`src/pages/manufacturing.astro`)
-
-The capability strip currently shows em-dashes:
-
-- [ ] **Capacity** — tons / month.
-- [ ] **Lead time** — weeks.
-- [ ] **MOQ** — minimum order quantity.
-- [ ] **Certifications count** — how many you hold.
-
-## 4. Testimonials
+## 3. Testimonials
 
 Section removed from the home page for now. When you have real customer quotes (3+), re-add a "Voices" section to `src/pages/index.astro` with quote, attribution, and (optionally) a small avatar per card.
+
+## 4. Events (`src/data/events.ts`)
+
+The `/events` page currently shows an empty state ("We're just getting started") because `events` is `[]`. For each event Yumiyu has joined:
+
+- [ ] **Event list** — name, date, location, and type (Expo / Bazaar / Exhibition / Community) for every event so far.
+- [ ] **Description** — 1–2 sentences on what happened.
+- [ ] **Fun fact** — optional, one notable/quirky detail per event (e.g. a sellout, a surprising visitor count, a first).
+- [ ] **Photos** — drop documentation photos in `src/assets/events/<slug>/`, import them, and list under `photos` on each entry (first photo is used as the cover).
+
+See the commented-out example in `src/data/events.ts` for the exact shape.
 
 ## 5. Inquiry Form Endpoint (`src/components/InquiryForm.astro`)
 
